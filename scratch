@@ -1,0 +1,47 @@
+  //Using Funtion to get Data from Firebase
+  getUsers() {
+    userRef.get().then((QuerySnapshot snapshot) {
+      snapshot.docs.forEach((QueryDocumentSnapshot doc) {
+        print(doc.data());
+        print(doc.exists);
+
+        print(doc.toString());
+      });
+    });
+  }
+
+
+  //Getting Data from Firebase with USER ID
+  getUserbyID() {
+    final String id = "OiLQNBVgY44ydstwIv43";
+    userRef.doc(id).get().then(
+      (DocumentSnapshot doc) {
+        print(doc.data());
+        print(doc.id);
+        print(doc.toString());
+      },
+    );
+  }
+
+
+
+
+  //Using Funtion to get Data from Firebase using ASYNC  & AWAIT
+  getUsers() async {
+    QuerySnapshot snapshot = await userRef.get();
+    snapshot.docs.forEach((QueryDocumentSnapshot doc) {
+      print(doc.data());
+      print(doc.exists);
+      print(doc.toString());
+    });
+  }
+
+
+  //Getting Data from Firebase with USER ID using ASYNC  & AWAIT
+  getUserbyID() async {
+    final String id = "OiLQNBVgY44ydstwIv43";
+    DocumentSnapshot doc = await userRef.doc(id).get();
+    print(doc.data());
+    print(doc.id);
+    print(doc.toString());
+  }
